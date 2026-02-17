@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Library</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<h1 class="heading">Book Library</h1>
+
+<div class="top-bar">
+    <a href="/create" class="create-btn">+ Create New Book</a>
+</div>
+
+<div class="book-container">
+
+    <% if (books.length === 0) { %>
+        <p>No books available</p>
+    <% } %>
+
+   <div class="book-container">
+    <% books.forEach(book => { %>
+        <div class="book-card">
+            <!-- 1. Image Section -->
+            <div class="image-wrapper">
+                <% if(book.link) { %>
+                    <img src="<%= book.link %>" alt="Book Cover">
+                <% } else { %>
+                    <img src="https://via.placeholder.com" alt="No Cover">
+                <% } %>
+            </div>
+
+            <!-- 2. Content Section -->
+            <h3><%= book.name %></h3>
+
+            <form action="/update/<%= book.id %>" method="POST">
+                <label>Rating</label>
+                <select name="rating">
+                    <% for(let i=1; i<=5; i++){ %>
+                        <option value="<%= i %>" <%= book.rating==i ? "selected" : "" %>> <%= i %> </option>
+                    <% } %>
+                </select>
+
+                <label>Notes</label>
+                <textarea name="notes"><%= book.about %></textarea>
+                <button type="submit" class="save-btn">Save Changes</button>
+            </form>
+
+            <form action="/delete" method="POST">
+                <input type="hidden" name="id" value="<%= book.id %>">
+                <button type="submit" class="delete-btn">Delete</button>
+            </form>
+        </div> <!-- ONLY ONE CLOSING DIV HERE -->
+    <% }) %>
+</div>
+  
+
+</div>
+
+</body>
+</html>

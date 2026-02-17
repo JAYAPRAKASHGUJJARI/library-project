@@ -1,0 +1,170 @@
+/* Import a modern font */
+@import url('https://fonts.googleapis.com');
+
+:root {
+    /* Sophisticated Color Palette */
+    --gradient-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --primary: #6c5ce7;
+    --success: #00b894;
+    --danger: #ff7675;
+    --text-dark: #2d3436;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--gradient-bg);
+    background-attachment: fixed; /* Keeps gradient still while scrolling */
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: var(--text-dark);
+}
+
+/* --- Layout --- */
+.heading {
+    text-align: center;
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 40px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.top-bar {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.create-btn {
+    background: white;
+    color: var(--primary);
+    padding: 14px 35px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+.create-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+}
+
+/* --- The Grid --- */
+.book-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- The Book Card --- */
+.book-card {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 24px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Image Fix: Keeps them all the same size and contained */
+.book-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover; /* Crops nicely to fill space */
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.book-card h3 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* --- Forms & Inputs --- */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #636e72;
+    margin-bottom: -5px;
+}
+
+select, textarea, input {
+    padding: 12px;
+    border: 1px solid #dfe6e9;
+    border-radius: 12px;
+    font-family: inherit;
+    background: #fdfdfd;
+}
+
+textarea {
+    height: 80px;
+    resize: none;
+}
+
+/* --- Buttons --- */
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    font-weight: bold;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+button[type="submit"] {
+    background: var(--success);
+    color: white;
+    margin-top: 10px;
+}
+
+/* Delete button styling */
+form[action="/delete"] button {
+    background: transparent;
+    color: var(--danger);
+    width: 100%;
+    margin-top: 5px;
+}
+
+form[action="/delete"] button:hover {
+    background: rgba(255, 118, 117, 0.1);
+}
+
+button:hover {
+    filter: brightness(1.05);
+}
+
+/* Create Form Container (for create.ejs) */
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}

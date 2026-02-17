@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Book</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<h1 class="heading">Create New Book</h1>
+
+<div class="form-container">
+    <form action="/create" method="POST">
+
+        <label>Book Title</label>
+        <input type="text" name="title" required>
+
+        <label>Rating (1-5)</label>
+        <input type="number" name="rating" min="1" max="5" required>
+
+        <label>Notes</label>
+        <textarea name="notes"></textarea>
+
+        <button type="submit">Create Book</button>
+    </form>
+</div>
+
+</body>
+</html>
